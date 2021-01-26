@@ -16,6 +16,12 @@ type JakGo struct {
 	Kota      Kota      `json:"kota"`
 }
 
+type RSUResponse struct {
+	Status string `json:"status"`
+	Count  int    `json:"count"`
+	Data   []RSU  `json:"data"`
+}
+
 type RSU struct {
 	ID            int      `json:"id"`
 	NamaRSU       string   `json:"nama_rsu"`
@@ -47,6 +53,23 @@ type Kecamatan struct {
 type Kelurahan struct {
 	KodeKelurahan int    `json:"kode"`
 	Nama          string `json:"nama"`
+}
+
+type KelurahanResponse struct {
+	Status string          `json:"status"`
+	Count  int             `json:"count"`
+	Data   []KelurahanData `json:"data"`
+}
+
+type KelurahanData struct {
+	KodeProvinsi  int    `json:"kode_provinsi"`
+	NamaProvinsi  string `json:"nama_provinsi"`
+	KodeKota      int    `json:"kode_kota"`
+	NamaKota      string `json:"nama_kota"`
+	KodeKecamatan int    `json:"kode_kecamatan"`
+	NamaKecamatan string `json:"nama_kecamatan"`
+	KodeKelurahan int    `json:"kode_kelurahan"`
+	NamaKelurahan string `json:"nama_kelurahan"`
 }
 
 type Location struct {
