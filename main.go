@@ -62,21 +62,20 @@ func JakGoKelurahan(ctx context.Context, url, auth string) (kel model.KelurahanR
 }
 
 func JakGo(w http.ResponseWriter, r *http.Request) {
+
+	var jr model.JakGoResponse
+
 	rsu, err := JakGoRSU(context.Background(), "http://api.jakarta.go.id/v1/rumahsakitumum", "LdT23Q9rv8g9bVf8v/fQYsyIcuD14svaYL6Bi8f9uGhLBVlHA3ybTFjjqe+cQO8k")
 	if err != nil {
+		jr.Status = "error"
 		return
 	}
-
-	// fmt.Println(rsu)
-	// fmt.Println("RSU", rsu)
 
 	kel, err := JakGoKelurahan(context.Background(), "http://api.jakarta.go.id/v1/kelurahan", "LdT23Q9rv8g9bVf8v/fQYsyIcuD14svaYL6Bi8f9uGhLBVlHA3ybTFjjqe+cQO8k")
 	if err != nil {
+		jr.Status = "error"
 		return
 	}
-
-	// fmt.Println(kel)
-	// log.Println(kel)
 
 	namaKec := make(map[int]string)
 	namaKel := make(map[int]string)
@@ -118,7 +117,11 @@ func JakGo(w http.ResponseWriter, r *http.Request) {
 		jaks = append(jaks, jak)
 	}
 
-	err = json.NewEncoder(w).Encode(jaks)
+	jr.Status = "success"
+	jr.Count = len(jaks)
+	jr.Data = jaks
+
+	err = json.NewEncoder(w).Encode(jr)
 	if err != nil {
 		return
 	}

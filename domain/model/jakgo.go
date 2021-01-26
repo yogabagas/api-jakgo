@@ -1,5 +1,11 @@
 package model
 
+type JakGoResponse struct {
+	Status string  `json:"status"`
+	Count  int     `json:"count"`
+	Data   []JakGo `json:"data"`
+}
+
 type JakGo struct {
 	ID        int       `json:"id"`
 	NamaRSU   string    `json:"nama_rsu"`
