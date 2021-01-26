@@ -87,8 +87,6 @@ func JakGo(w http.ResponseWriter, r *http.Request) {
 		namaKota[k.KodeKota] = k.NamaKota
 	}
 
-	fmt.Println(namaKec, namaKel, namaKota)
-
 	var jaks []model.JakGo
 	var jak model.JakGo
 	for _, r := range rsu.Data {

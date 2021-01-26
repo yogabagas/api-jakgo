@@ -6,7 +6,7 @@ type JakGo struct {
 	JenisRSU  string    `json:"jenis_rsu"`
 	Location  Location  `json:"location"`
 	Alamat    string    `json:"alamat"`
-	KodePos   string    `json:"kode_pos"`
+	KodePos   int       `json:"kode_pos"`
 	Telepon   []string  `json:"telepon"`
 	Faximile  []string  `json:"faximile"`
 	Website   string    `json:"website"`
@@ -27,8 +27,7 @@ type RSU struct {
 	NamaRSU       string   `json:"nama_rsu"`
 	JenisRSU      string   `json:"jenis_rsu"`
 	Location      Location `json:"location"`
-	Alamat        string   `json:"alamat"`
-	KodePos       string   `json:"kode_pos"`
+	KodePos       int      `json:"kode_pos"`
 	Telepon       []string `json:"telepon"`
 	Faximile      []string `json:"faximile"`
 	Website       string   `json:"website"`
